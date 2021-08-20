@@ -8,6 +8,7 @@ from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView
 from django.utils.decorators import method_decorator
 import os
+from decouple import config
 
 
 from django_google_api.mixins import(
@@ -59,13 +60,14 @@ def profile_view(request):
 			message = "Your profile has been updated"
 		else:
 			message = FormErrors(form)
+			result = "Error"
 		data = {'result': result, 'message': message}
 		return JsonResponse(data)
 
 	else:
 
 		context = {'form': form}
-		context['google_api_key'] = os.environ.get('GOOGLE_API_KEY')
+		context['google_api_key'] = config('GOOGLE_API_KEY')
 		context['base_country'] = settings.BASE_COUNTRY
 
 		return render(request, 'users/profile.html', context)
@@ -84,7 +86,7 @@ class SignUpView(AjaxFormMixin, FormView):
 	#reCAPTURE key required in context
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
-		context["recaptcha_site_key"] = os.environ.get('RECAPTCHA_PUBLIC_KEY')
+		context["recaptcha_site_key"] = config('RECAPTCHA_PUBLIC_KEY')
 		return context
 
 	#over write the mixin logic to get, check and save reCAPTURE score

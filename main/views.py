@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.conf import settings
+from decouple import config
 import os
 
 from django_google_api.mixins import Directions
@@ -9,7 +10,7 @@ Basic view for routing
 def route(request):
 
 	context = {
-	"google_api_key": os.environ.get('GOOGLE_API_KEY'),
+	"google_api_key": config('GOOGLE_API_KEY'),
 	"base_country": settings.BASE_COUNTRY}
 	return render(request, 'main/route.html', context)
 
@@ -45,7 +46,7 @@ def map(request):
 		return redirect(reverse('main:route'))
 
 	context = {
-	"google_api_key": settings.GOOGLE_API_KEY,
+	"google_api_key": config('GOOGLE_API_KEY'),
 	"base_country": settings.BASE_COUNTRY,
 	"lat_a": lat_a,
 	"long_a": long_a,

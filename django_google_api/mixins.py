@@ -6,6 +6,7 @@ import json
 import datetime
 from humanfriendly import format_timespan
 from django.http import JsonResponse
+from decouple import config
 import os
 
 
@@ -27,7 +28,7 @@ def reCAPTCHAValidation(token):
 	result = requests.post(
 		'https://www.google.com/recaptcha/api/siteverify',
 		 data={
-		 	'secret': os.environ.get('RECAPTCHA_PRIVATE_KEY'), #settings.RECAPTCHA_PRIVATE_KEY
+		 	'secret': config('RECAPTCHA_PRIVATE_KEY'), #settings.RECAPTCHA_PRIVATE_KEY
 			'response': token
 		 })
 
@@ -90,10 +91,11 @@ def Directions(*args, **kwargs):
 	result = requests.get(
 		'https://maps.googleapis.com/maps/api/directions/json?',
 		 params={
+		 'language': 'es_AR',
 		 'origin': origin,
 		 'destination': destination,
 		 'waypoints': waypoints,
-		 "key": os.environ.get('GOOGLE_API_KEY') #settings.GOOGLE_API_KEY
+		 "key": config('GOOGLE_API_KEY') #settings.GOOGLE_API_KEY
 		 })
 
 	directions = result.json()
