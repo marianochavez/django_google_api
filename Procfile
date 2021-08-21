@@ -1,1 +1,1 @@
-web: gunicorn jagshop.wsgi --log-file -
+web: gunicorn django_google_api.wsgi --log-file -
