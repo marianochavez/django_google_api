@@ -11,12 +11,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = config('SECRET_KEY')
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = config('DEBUG')
-DEBUG = os.getenv('DEBUG',True)
+DEBUG = config('DEBUG')
+# DEBUG = os.getenv('DEBUG',True)
 
 ALLOWED_HOSTS = ['google-six-api.herokuapp.com','localhost']
 
@@ -135,14 +135,14 @@ LOGOUT_REDIRECT_URL = "users:sign-in"
 
 # GOOGLE APIS
 
-GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
-RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')
-RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
+# GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
+# RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')
+# RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
 
 # LOCAL
-# GOOGLE_API_KEY = config('GOOGLE_API_KEY')
-# RECAPTCHA_PUBLIC_KEY = config('RECAPTCHA_PUBLIC_KEY')
-# RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY')
+GOOGLE_API_KEY = config('GOOGLE_API_KEY')
+RECAPTCHA_PUBLIC_KEY = config('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY')
 
 
 BASE_COUNTRY = "AR"
