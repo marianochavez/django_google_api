@@ -10,7 +10,7 @@
 
 {% block content %}
 
-<h3>Django Google API Course - Sign Up</h3>
+<h3>Django Google API - Registro</h3>
 
 <div class="container">
 
@@ -19,29 +19,29 @@
     {% csrf_token %}
 
     
-    <label for="first_name">First Name</label>
+    <label for="first_name">Nombre</label>
     {{form.first_name}}
 
-    <label for="last_name">Last Name</label>
+    <label for="last_name">Apellido</label>
     {{form.last_name}}
 
-    <label for="username">Username</label>
+    <label for="username">Email</label>
     {{form.username}}
 
-    <label for="password1">Password</label>
+    <label for="password1">Contraseña</label>
     {{form.password1}}
 
-    <label for="password2">Confirm Password</label>
+    <label for="password2">Confirmar Contraseña</label>
     {{form.password2}}
 
     {{form.token}}
 
-    <label class="check-container">Show Passwords
+    <label class="check-container">Mostrar Contraseña
      <input type="checkbox" onclick="showPword()">
      <span class="checkmark"></span>
     </label>
 
-    <button type="submit">Sign up</button>
+    <button type="submit">Registrarme</button>
 
   </form>
 </div>

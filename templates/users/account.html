@@ -10,25 +10,25 @@
 
 {% block content %}
 
-<h3>Django Google API Course - User Account</h3>
+<h3>Django Google API - Mi Cuenta</h3>
 
 <div class="container">
 
-  <h4>User account details</h4>
+  <h4>Información de Usuario</h4>
   <table>
     <thead>
       <tr>
-        <th>Field</th>
+        <th>Datos</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Username</td>
+        <td>Email</td>
           <td>{{request.user.username}}</td>
       </tr>
       <tr>
-        <td>Name</td>
+        <td>Nombre</td>
         <td>{{request.user.first_name|title}} {{request.user.last_name|title}}</td>      
       </tr>
 
@@ -36,7 +36,7 @@
       {% if request.user.userprofile.has_profile %}
 
         <tr>
-          <td>Address</td>
+          <td>Dirección</td>
           <td>
             <address>
               {{request.user.userprofile.address}}<br>
@@ -49,8 +49,8 @@
 
       {% else %}
         <tr>
-          <td>User Profile</td>
-          <td><a href="{% url 'users:profile' %}" >Create user Profile</a></td>
+          <td>Mi Perfil</td>
+          <td><a href="{% url 'users:profile' %}" >Crear Mi Perfil</a></td>
         </tr>
       {% endif %}
     </tbody>

@@ -28,7 +28,7 @@ def reCAPTCHAValidation(token):
 	result = requests.post(
 		'https://www.google.com/recaptcha/api/siteverify',
 		 data={
-		 	'secret': config('RECAPTCHA_PRIVATE_KEY'), #settings.RECAPTCHA_PRIVATE_KEY
+		 	'secret': settings.RECAPTCHA_PRIVATE_KEY,
 			'response': token
 		 })
 
@@ -95,7 +95,7 @@ def Directions(*args, **kwargs):
 		 'origin': origin,
 		 'destination': destination,
 		 'waypoints': waypoints,
-		 "key": config('GOOGLE_API_KEY') #settings.GOOGLE_API_KEY
+		 "key": settings.GOOGLE_API_KEY
 		 })
 
 	directions = result.json()

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,10 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-w505u4mxrdoqq-wx0)gh5o!8%46hd%%(n_2%jq%s5ndou2(t_u'
+# SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = config('DEBUG')
+DEBUG = os.getenv('DEBUG',False)
 
 ALLOWED_HOSTS = []
 
@@ -126,8 +129,6 @@ STATICFILES_DIRS = [
 
 STATIC_URL = '/static/'
 
-# TODO: PASAR A .ENV
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 
 
@@ -139,5 +140,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = "users:sign-in"
 LOGIN_REDIRECT_URL = "users:account"
 LOGOUT_REDIRECT_URL = "users:sign-in"
+
+GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
+RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
+
+# LOCAL
+# GOOGLE_API_KEY = config('GOOGLE_API_KEY')
+# RECAPTCHA_PUBLIC_KEY = config('RECAPTCHA_PUBLIC_KEY')
+# RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY')
+
 
 BASE_COUNTRY = "AR"
